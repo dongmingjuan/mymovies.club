@@ -4,4 +4,30 @@
   </div>
   <h2><%= @movie.title %></h2>
   <p><%= @movie.description %></p>
+  <%= link_to("Write My favoriate lyrics ", new_movie_comment_path(@movie), class: "btn btn-sm btn-primary") %>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Writer</th>
+      <th>Create Time</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.content %></td>
+      <td><%= comment.user.email %></td>
+      <td><%= comment.created_at %></td>
+      <td>
+                        <%= link_to edit_movie_comment_path(comment.movie,comment), class: "btn btn-sm btn-default" do %>
+                         <i class="fa fa-pencil">Edit</i>
+                       <% end %>
+                       <%= link_to("Delete", movie_comment_path(comment.movie,comment), method: :delete, class: "btn btn-xs btn-default", data: {confirm: "Are you sure? "}) %>
+     </td>
+    </tr>
+  </tbody>
+    <% end %>
+</table>
 </div>
