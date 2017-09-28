@@ -16,3 +16,40 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ .jumbotron {
+  background-image:url('https://ws1.sinaimg.cn/large/006tKfTcgy1fjz5i1nk1ij31kw11zb2a.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 0px;
+}
+
+.title {
+  font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
+  margin-left: 600px;
+  margin-top: 450px;
+  margin-bottom: 20px;
+}
+
+.slogan {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-left: 600px;
+  color: black;
+  top: 12px;
+}
+
+.lead {
+  margin-bottom: 20px;
+  margin-left: 600px;
+  color: white;
+}
+.container-fluid .jumbotron{
+                  padding-bottom: 800px;
+                  margin: -20px -15px 20px;
+                  border-radius: 0;
+}
+ @media (min-width: 768px) {
+                   .navbar {
+                                     border-radius: 0;
+                  }
+}
