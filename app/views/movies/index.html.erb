@@ -9,6 +9,7 @@
         <th>Description</th>
         <th>Creator</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +18,15 @@
            <td><%= link_to(movie.title, movie_path(movie))%></td>
            <td><%= movie.description %></td>
            <td><%= movie.user.email %></td>
+           <td>
+                             <% if movie.image.present? %>
+                                 <%= image_tag(movie.image.thumb.url, class: "thumbnail")%>
+                                 <%= link_to("Download Image", movie.image_url)%>
+                             <% else %>
+                                 <p>No picture </p>
+                             <% end %>
+
+           </td>
            <td>
                <%= link_to edit_movie_path(movie), class: "btn btn-sm btn-default" do %>
                  <i class="fa fa-pencil">Edit</i>

@@ -4,6 +4,13 @@
                   <%= simple_form_for @movie do |f| %>
                    <%= f.input :title %>
                    <%= f.input :description %>
+                   <%= f.input :image, as: :file %>
+                   <% if @movie.image.present? %>
+                         <span>目前商品图</span>
+                             <%= image_tag(@movie.image.thumb.url, class: "thumbnail") %>
+                   <% else %>
+                             <p> No Picture </p>
+                    <% end %>
                    <%= f.submit "Submit", class: "btn btn-sm btn-primary" %>
                   <% end %>
 
