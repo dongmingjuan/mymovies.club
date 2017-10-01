@@ -1,11 +1,13 @@
 <div class="col-md-12">
-  <div class="group">
-    <%= link_to("Edit", edit_movie_path(@movie), class: "btn btn-sm btn-primary pull-right")%>
+  <div class="panel panel-default">
+       <h2><%= @movie.title %></h2>
+
+       <p><%= @movie.description %></p>
+     </div>
   </div>
-  <h2><%= @movie.title %></h2>
-  <p><%= @movie.description %></p>
-  <%= link_to("Write My favoriate lyrics ", new_movie_comment_path(@movie), class: "btn btn-sm btn-primary") %>
-  <table class="table table-bordered">
+
+  <%= link_to("Write Commmet ", new_movie_comment_path(@movie), class: "btn btn-sm btn-primary", style: "margin-left:10px; margin-bottom:5px;") %>
+  <table class="table table-bordered" style="margin-left:10px; margin-right:10px;">
   <thead>
     <tr>
       <th>Content</th>
@@ -17,14 +19,16 @@
   <tbody>
     <% @comments.each do |comment| %>
     <tr>
-      <td><%= comment.content %></td>
+      <td style="width:700px;"><%= comment.content %></td>
       <td><%= comment.user.email %></td>
       <td><%= comment.created_at %></td>
       <td>
                         <%= link_to edit_movie_comment_path(comment.movie,comment), class: "btn btn-sm btn-default" do %>
-                         <i class="fa fa-pencil">Edit</i>
+                         <i class="fa fa-pencil"></i>
                        <% end %>
-                       <%= link_to("Delete", movie_comment_path(comment.movie,comment), method: :delete, class: "btn btn-xs btn-default", data: {confirm: "Are you sure? "}) %>
+                       <%= link_to movie_comment_path(comment.movie,comment), method: :delete,data: {confirm: "Are you sure? "}, class: "btn btn-sm btn-default" do %>
+                          <i class="fa fa-trash"></i>
+                       <% end %>
      </td>
     </tr>
   </tbody>

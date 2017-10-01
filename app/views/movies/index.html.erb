@@ -1,11 +1,11 @@
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("New Movie", new_movie_path, class: "btn btn-sm btn-primary") %>
+    <%= link_to("New Movie", new_movie_path, class: "btn btn-sm btn-primary", style: "margin-bottom:10px;") %>
   </div>
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Title</th>
+        <th style="width:100px;">Title</th>
         <th>Description</th>
         <th>Creator</th>
         <th></th>
@@ -16,7 +16,7 @@
        <% @movies.each do |movie| %>
          <tr>
            <td><%= link_to(movie.title, movie_path(movie))%></td>
-           <td><%= movie.description %></td>
+           <td style="width:600px;"><%= movie.description %></td>
            <td><%= movie.user.email %></td>
            <td>
                              <% if movie.image.present? %>
@@ -29,9 +29,11 @@
            </td>
            <td>
                <%= link_to edit_movie_path(movie), class: "btn btn-sm btn-default" do %>
-                 <i class="fa fa-pencil">Edit</i>
+                 <i class="fa fa-pencil"></i>
                <% end %>
-               <%= link_to("Delete", movie_path(movie), method: :delete, class: "btn btn-xs btn-default", data: {confirm: "Are you sure? "}) %>
+               <%= link_to movie_path(movie), method: :delete, data: {confirm: "Are you sure? "}, class: "btn btn-sm btn-default" do   %>
+                 <i class="fa fa-trash"></i>
+               <% end %>
            </td>
          </tr>
        <% end %>
